@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "White Running Shoes",
+    "brand": "Freeletics",
+    "price": 99.99,
+    "image_url": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
+    "description": "Lightweight white running shoe for daily jogs."
+  },
+  {
+    "id": 2,
+    "name": "Black Leather Sneaker",
+    "brand": "UrbanStreet",
+    "price": 129.49,
+    "image_url": "https://images.pexels.com/photos/2529151/pexels-photo-2529151.jpeg",
+    "description": "Sleek black sneaker with leather finish."
+  },
+  {
+    "id": 3,
+    "name": "Red High-Top Trainers",
+    "brand": "Velocity",
+    "price": 89.50,
+    "image_url": "https://images.pexels.com/photos/2529150/pexels-photo-2529150.jpeg",
+    "description": "Bright red trainers for high performance."
+  },
+  {
+    "id": 4,
+    "name": "Slip-On Casual",
+    "brand": "EasyWalk",
+    "price": 59.99,
+    "image_url": "https://images.pexels.com/photos/2529152/pexels-photo-2529152.jpeg",
+    "description": "Comfortable slip-on for everyday wear."
+  },
+  {
+    "id": 5,
+    "name": "Blue Hiking Boot",
+    "brand": "TrailMaster",
+    "price": 149.99,
+    "image_url": "https://images.pexels.com/photos/2529154/pexels-photo-2529154.jpeg",
+    "description": "Durable blue boot built for rough terrains."
+  },
+  {
+    "id": 6,
+    "name": "Classic Canvas High-Top",
+    "brand": "ConverseX",
+    "price": 75.00,
+    "image_url": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg",
+    "description": "Timeless canvas high-top sneakers."
+  },
+  {
+    "id": 7,
+    "name": "Gray Runner",
+    "brand": "FlexRun",
+    "price": 110.00,
+    "image_url": "https://images.pexels.com/photos/19090/pexels-photo.jpg",
+    "description": "Breathable gray trainers for gym / city runs."
+  },
+  {
+    "id": 8,
+    "name": "Brown Leather Boot",
+    "brand": "RuggedWear",
+    "price": 170.00,
+    "image_url": "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg",
+    "description": "Premium brown leather boot for rugged outdoor style."
+  },
+  {
+    "id": 9,
+    "name": "Pink Casual Sneaker",
+    "brand": "UrbanChic",
+    "price": 85.00,
+    "image_url": "https://images.pexels.com/photos/1456706/pexels-photo-1456706.jpeg",
+    "description": "Trendy pink sneaker for casual wear."
+  },
+  {
+    "id": 10,
+    "name": "Black Formal Leather Shoe",
+    "brand": "ClassicLine",
+    "price": 140.00,
+    "image_url": "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg",
+    "description": "Elegant black leather formal shoe for office or events."
+  },
+  {
+    "id": 11,
+    "name": "White Tennis Sneaker",
+    "brand": "CourtPro",
+    "price": 120.00,
+    "image_url": "https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg",
+    "description": "Clean white sneaker ideal for court & street."
+  },
+  {
+    "id": 12,
+    "name": "Gray Winter Boot",
+    "brand": "SnowFlex",
+    "price": 180.00,
+    "image_url": "https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg",
+    "description": "Insulated gray boot perfect for winter weather."
+  },
+  {
+    "id": 13,
+    "name": "Red Low-Top Sneaker",
+    "brand": "StrideLine",
+    "price": 70.00,
+    "image_url": "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg",
+    "description": "Bold red sneaker for casual & streetwear style."
+  },
+  {
+    "id": 14,
+    "name": "Black Heeled Pump",
+    "brand": "Eleganza",
+    "price": 95.00,
+    "image_url": "https://images.pexels.com/photos/267320/pexels-photo-267320.jpeg",
+    "description": "Chic black heel for evening or formal wear."
+  },
+  {
+    "id": 15,
+    "name": "Athletic Spikes",
+    "brand": "Speedster",
+    "price": 130.00,
+    "image_url": "https://images.pexels.com/photos/1619655/pexels-photo-1619655.jpeg",
+    "description": "Professional running spikes built for track performance."
+  },
+  {
+    "id": 16,
+    "name": "Loafer Casual Brown",
+    "brand": "LoafX",
+    "price": 105.00,
+    "image_url": "https://images.pexels.com/photos/19090/pexels-photo.jpg",
+    "description": "Stylish brown loafers for casual & business casual outfits."
+  },
+  {
+    "id": 17,
+    "name": "Sporty Flip Flops",
+    "brand": "RelaxStep",
+    "price": 45.00,
+    "image_url": "https://images.pexels.com/photos/267202/pexels-photo-267202.jpeg",
+    "description": "Comfortable sporty flip flops for beach or pool."
+  },
+  {
+    "id": 18,
+    "name": "Yellow Running Shoe",
+    "brand": "BrightStep",
+    "price": 80.00,
+    "image_url": "https://images.pexels.com/photos/1884584/pexels-photo-1884584.jpeg",
+    "description": "Vibrant yellow shoe for bold style on the go."
+  },
+  {
+    "id": 19,
+    "name": "Trail Running Shoe",
+    "brand": "MountainX",
+    "price": 160.00,
+    "image_url": "https://images.pexels.com/photos/1630344/pexels-photo-1630344.jpeg",
+    "description": "Sturdy trail runner built for rough terrains and offroad."
+  },
+  {
+    "id": 20,
+    "name": "Summer Leather Sandal",
+    "brand": "BeachWalk",
+    "price": 60.00,
+    "image_url": "https://images.pexels.com/photos/267320/pexels-photo-267320.jpeg",
+    "description": "Handmade leather sandal perfect for summer."
+  },
+  {
+    "id": 21,
+    "name": "Blue Canvas Sneaker",
+    "brand": "UrbanWalk",
+    "price": 90.00,
+    "image_url": "https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg",
+    "description": "Lightweight canvas sneaker for everyday wear."
+  },
+  {
+    "id": 22,
+    "name": "Black Hiking Boot Mid",
+    "brand": "TrailForce",
+    "price": 175.00,
+    "image_url": "https://images.pexels.com/photos/248249/pexels-photo-248249.jpeg",
+    "description": "Durable hiking boot with ankle support."
+  },
+  {
+    "id": 23,
+    "name": "Orange Mesh Trainers",
+    "brand": "EnergyStep",
+    "price": 115.00,
+    "image_url": "https://images.pexels.com/photos/19090/pexels-photo.jpg",
+    "description": "Breathable mesh trainers with a pop of orange color."
+  },
+  {
+    "id": 24,
+    "name": "Formal Black Loafer",
+    "brand": "MetroStyle",
+    "price": 100.00,
+    "image_url": "https://images.pexels.com/photos/305933/pexels-photo-305933.jpeg",
+    "description": "Classic black loafer for formal & semi-formal wear."
+  },
+  {
+    "id": 25,
+    "name": "Red Stilettos",
+    "brand": "Eleganza",
+    "price": 98.00,
+    "image_url": "https://images.pexels.com/photos/1456707/pexels-photo-1456707.jpeg",
+    "description": "Bold red stilettos for special occasions."
+  },
+  {
+    "id": 26,
+    "name": "Gray Trainer Shoes",
+    "brand": "PowerRun",
+    "price": 125.00,
+    "image_url": "https://images.pexels.com/photos/240280/pexels-photo-240280.jpeg",
+    "description": "Neutral gray trainers for gym and daily use."
+  },
+  {
+    "id": 27,
+    "name": "Beach Slippers Brown",
+    "brand": "SandStep",
+    "price": 40.00,
+    "image_url": "https://images.pexels.com/photos/19090/pexels-photo.jpg",
+    "description": "Soft slippers ideal for the beach or pool."
+  },
+  {
+    "id": 28,
+    "name": "Maroon Casual Shoes",
+    "brand": "CityStride",
+    "price": 92.00,
+    "image_url": "https://images.pexels.com/photos/209289/pexels-photo-209289.jpeg",
+    "description": "Trendy maroon shoes perfect for weekend outings."
+  },
+  {
+    "id": 29,
+    "name": "Football Cleats",
+    "brand": "ProKick",
+    "price": 150.00,
+    "image_url": "https://images.pexels.com/photos/267155/pexels-photo-267155.jpeg",
+    "description": "High performance cleats for outdoor football matches."
+  },
+  {
+    "id": 30,
+    "name": "Minimal White Sneaker",
+    "brand": "EverydayX",
+    "price": 88.00,
+    "image_url": "https://images.pexels.com/photos/2529145/pexels-photo-2529145.jpeg",
+    "description": "Clean minimalist white sneaker that pairs with everything."
+  }
+]

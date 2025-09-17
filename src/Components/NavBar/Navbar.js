@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -15,6 +16,7 @@ import { Link } from "react-router-dom";
 import { Close } from "@mui/icons-material";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [anchorNav, setAnchorNav] = useState(null);
   const openMenu = (e) => {
     setAnchorNav(e.currentTarget);
@@ -29,6 +31,7 @@ const Navbar = () => {
           size="large"
           edge="start"
           color="inherit"
+          onClick={() => navigate("/")} 
           sx={{ display: { xs: "none", md: "flex" } }}
         >
           <Box
@@ -72,6 +75,7 @@ const Navbar = () => {
           }}
         >
           <IconButton
+            onClick={() => navigate("/")} 
             size="large"
             edge="start"
             color="inherit"
