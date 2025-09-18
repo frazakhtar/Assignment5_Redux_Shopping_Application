@@ -20,19 +20,19 @@ const HomePage = () => {
   }, []);
 
   const getProducts = async () => {
-    const res = await fetch("./Products.json");
+    const res = await fetch("Products.json");
     const result = await res.json();
     setProduct(result);
   };
   const dispatch=useDispatch()
   const handleAddToCart = (product) => {
-    console.log("Dispatching:", product);
     dispatch(addToCart(product));
   };
 
   return (
     <Container maxWidth="lg" sx={{ my: 2 }}>
       <Paper elevation={3}>
+          <Typography variant="h3" component="h3" sx={{p:3, display:"flex", alignItems:"center", justifyContent:"center"}}>Available Products</Typography>
         <Grid
           container
           spacing={3}
