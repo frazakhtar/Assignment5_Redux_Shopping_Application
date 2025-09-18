@@ -38,7 +38,6 @@ const HomePage = () => {
   const cartItem = useSelector((state) => state.cart.items);
 
   const handleAddToCart = (product) => {
-    console.log(product);
     dispatch(addToCart(product));
   };
 
