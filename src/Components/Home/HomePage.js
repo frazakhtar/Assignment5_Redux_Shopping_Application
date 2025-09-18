@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -6,15 +7,21 @@ import {
   CardMedia,
   Container,
   Grid,
+  IconButton,
+  InputAdornment,
   Paper,
+  TextField,
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
+import SearchIcon from '@mui/icons-material/Search';
 
 const HomePage = () => {
   const [product, setProduct] = React.useState([]);
+  const [filtered, setFiltered] = React.useState([]);
+  const [query, setQuery] = React.useState("");
   useEffect(() => {
     getProducts();
   }, []);
@@ -23,16 +30,77 @@ const HomePage = () => {
     const res = await fetch("Products.json");
     const result = await res.json();
     setProduct(result);
+    setFiltered(result);
   };
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+  };
+
+    const handleSearch = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    if (!value) {
+      setFiltered(product);
+    } else {
+      setFiltered(
+        product.filter(
+          (p) =>
+            p.name.toLowerCase().includes(value.toLowerCase()) ||
+            p.brand.toLowerCase().includes(value.toLowerCase()) ||
+            p.description.toLowerCase().includes(value.toLowerCase())
+        )
+      );
+    }
   };
 
   return (
     <Container maxWidth="lg" sx={{ my: 2 }}>
       <Paper elevation={3}>
-          <Typography variant="h3" component="h3" sx={{p:3, display:"flex", alignItems:"center", justifyContent:"center"}}>Available Products</Typography>
+        <Typography
+          variant="h3"
+          component="h3"
+          sx={{
+            p: 3,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Available Products
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <TextField
+            value={query}
+            variant="standard"
+            onChange={handleSearch}
+            placeholder="Search Products"
+            InputProps={{
+              disableUnderline: true,
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton>
+                    <SearchIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              pl: 1,
+              pt: 1,
+              width: "20rem",
+              height: "2.5rem",
+              border: "1px solid black",
+              borderRadius: "10rem",
+            }}
+          />
+        </Box>
         <Grid
           container
           spacing={3}
@@ -43,7 +111,7 @@ const HomePage = () => {
             justifyContent: "center",
           }}
         >
-          {product.map((elem) => {
+          {filtered.map((elem) => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={elem.id}>
                 <Card

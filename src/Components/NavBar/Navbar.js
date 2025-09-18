@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   AppBar,
+  Badge,
   Box,
   Button,
   IconButton,
@@ -68,8 +69,23 @@ const Navbar = () => {
           <Button sx={{color:"#000000", border: "1px solid black", borderRadius:"2rem"}} component={Link} to="/about">
             About
           </Button>
-          <Button startIcon={<ShoppingCartTwoToneIcon />} sx={{color:"#000000", border: "1px solid black", borderRadius:"2rem"}} component={Link} to="/cart">
-            Cart<span>{itemCount}</span>
+          <Button startIcon={
+        <Badge
+        badgeContent={itemCount}
+        color="error"
+        overlap="circular"
+        sx={{
+          "& .MuiBadge-badge": {
+            fontSize: "0.75rem",
+            height: 18,
+            minWidth: 18,
+          },
+        }}
+      >
+            <ShoppingCartTwoToneIcon />
+            </Badge>
+            } sx={{color:"#000000", border: "1px solid black", borderRadius:"2rem"}} component={Link} to="/cart">
+            Cart
           </Button>
         </Box>
 
