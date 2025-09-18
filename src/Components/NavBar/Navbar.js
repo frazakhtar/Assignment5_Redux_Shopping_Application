@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   AppBar,
   Box,
@@ -25,6 +26,9 @@ const Navbar = () => {
   const closeMenu = () => {
     setAnchorNav(null);
   };
+
+  const cartItems = useSelector((state)=>state.cart.items)
+  const itemCount = cartItems.length;
   return (
     <AppBar position="static" sx={{ backgroundColor: "transparent" }}>
       <Toolbar>
@@ -65,7 +69,7 @@ const Navbar = () => {
             About
           </Button>
           <Button startIcon={<ShoppingCartTwoToneIcon />} sx={{color:"#000000", border: "1px solid black", borderRadius:"2rem"}} component={Link} to="/cart">
-            Cart
+            Cart<span>{itemCount}</span>
           </Button>
         </Box>
 

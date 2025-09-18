@@ -10,6 +10,8 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
 
 const HomePage = () => {
   const [product, setProduct] = React.useState([]);
@@ -22,8 +24,11 @@ const HomePage = () => {
     const result = await res.json();
     setProduct(result);
   };
-
-  const handleAddToCart = () => {};
+  const dispatch=useDispatch()
+  const handleAddToCart = (product) => {
+    console.log("Dispatching:", product);
+    dispatch(addToCart(product));
+  };
 
   return (
     <Container maxWidth="lg" sx={{ my: 2 }}>
@@ -78,7 +83,7 @@ const HomePage = () => {
                       variant="contained"
                       color="#000000"
                       sx={{ backgroundColor: "#f6e7e7ff", fontWeight: "600" }}
-                      onClick={() => handleAddToCart(product)}
+                      onClick={() => handleAddToCart(elem)}
                     >
                       Add to Cart
                     </Button>
