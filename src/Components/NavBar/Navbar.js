@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import { Link } from "react-router-dom";
 import { Close } from "@mui/icons-material";
 
@@ -56,12 +57,15 @@ const Navbar = () => {
         >
           StepUp Shopping
         </Typography>
-        <Box sx={{display: { xs: "none", md: "flex" } }}>
-          <Button sx={{color:"#000000", fontFamily: "Poppins, sans-serif"}} component={Link} to="/">
+        <Box sx={{display: { xs: "none", md: "flex", gap: 10} }}>
+          <Button sx={{color:"#000000", border: "1px solid black", borderRadius:"2rem"}} component={Link} to="/">
             Home
           </Button>
-          <Button sx={{color:"#000000", fontFamily: "Poppins, sans-serif"}} component={Link} to="/about">
+          <Button sx={{color:"#000000", border: "1px solid black", borderRadius:"2rem"}} component={Link} to="/about">
             About
+          </Button>
+          <Button startIcon={<ShoppingCartTwoToneIcon />} sx={{color:"#000000", border: "1px solid black", borderRadius:"2rem"}} component={Link} to="/cart">
+            Cart
           </Button>
         </Box>
 
@@ -133,9 +137,9 @@ const Navbar = () => {
               <MenuItem sx={{fontFamily: "Poppins, sans-serif"}} component={Link} to={"/about"}>
                 About
               </MenuItem>
-              {/* <MenuItem component={Link} to={"/user_info"}>
-                User Info
-              </MenuItem> */}
+              <MenuItem component={Link} to={"/cart"}>
+                Cart
+              </MenuItem>
             </MenuList>
           </Menu>
         </Box>
