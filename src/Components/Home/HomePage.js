@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -22,6 +22,7 @@ const HomePage = () => {
   const [product, setProduct] = React.useState([]);
   const [filtered, setFiltered] = React.useState([]);
   const [query, setQuery] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(true);
   useEffect(() => {
     getProducts();
   }, []);
@@ -31,9 +32,13 @@ const HomePage = () => {
     const result = await res.json();
     setProduct(result);
     setFiltered(result);
+    setIsLoading(false);
   };
   const dispatch = useDispatch();
+  const cartItem = useSelector((state)=>state.cart.items)
+
   const handleAddToCart = (product) => {
+    console.log(product)
     dispatch(addToCart(product));
   };
 
@@ -58,8 +63,8 @@ const HomePage = () => {
     <Container maxWidth="lg" sx={{ my: 2 }}>
       <Paper elevation={3}>
         <Typography
-          variant="h3"
-          component="h3"
+          variant="h5"
+          component="h5"
           sx={{
             p: 3,
             display: "flex",
@@ -101,6 +106,7 @@ const HomePage = () => {
             }}
           />
         </Box>
+{isLoading ? <Paper sx={{fontSize:"5rem", display:"flex",alignItems:"center",justifyContent:"center"}}>Loading...</Paper> :
         <Grid
           container
           spacing={3}
@@ -150,10 +156,11 @@ const HomePage = () => {
                       fullWidth
                       variant="contained"
                       color="#000000"
+                      disabled={cartItem?.some((item) => item.id === elem.id)}
                       sx={{ backgroundColor: "#f6e7e7ff", fontWeight: "600" }}
                       onClick={() => handleAddToCart(elem)}
                     >
-                      Add to Cart
+                      {cartItem?.some((item) => item.id === elem.id) ? "Product Added" : "Add to Cart"}
                     </Button>
                   </CardActions>
                 </Card>
@@ -161,6 +168,7 @@ const HomePage = () => {
             );
           })}
         </Grid>
+}
       </Paper>
     </Container>
   );

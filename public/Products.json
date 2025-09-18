@@ -13,7 +13,7 @@
     "name": "Black Leather Sneaker",
     "brand": "UrbanStreet",
     "price": 129.49,
-    "image_url": "https://images.pexels.com/photos/2529151/pexels-photo-2529151.jpeg",
+    "image_url": "https://images.pexels.com/photos/8670488/pexels-photo-8670488.jpeg",
     "description": "Sleek black sneaker with leather finish.",
     "quantity": 1
   },
@@ -22,7 +22,7 @@
     "name": "Red High-Top Trainers",
     "brand": "Velocity",
     "price": 89.50,
-    "image_url": "https://images.pexels.com/photos/2529150/pexels-photo-2529150.jpeg",
+    "image_url": "https://images.pexels.com/photos/296159/pexels-photo-296159.jpeg",
     "description": "Bright red trainers for high performance.",
     "quantity": 1
   },
@@ -31,7 +31,7 @@
     "name": "Slip-On Casual",
     "brand": "EasyWalk",
     "price": 59.99,
-    "image_url": "https://images.pexels.com/photos/2529152/pexels-photo-2529152.jpeg",
+    "image_url": "https://images.pexels.com/photos/5383294/pexels-photo-5383294.jpeg",
     "description": "Comfortable slip-on for everyday wear.",
     "quantity": 1
   },
@@ -40,7 +40,7 @@
     "name": "Blue Hiking Boot",
     "brand": "TrailMaster",
     "price": 149.99,
-    "image_url": "https://images.pexels.com/photos/2529154/pexels-photo-2529154.jpeg",
+    "image_url": "https://images.pexels.com/photos/31844639/pexels-photo-31844639.jpeg",
     "description": "Durable blue boot built for rough terrains.",
     "quantity": 1
   },
@@ -49,7 +49,7 @@
     "name": "Classic Canvas High-Top",
     "brand": "ConverseX",
     "price": 75.00,
-    "image_url": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg",
+    "image_url": "https://images.pexels.com/photos/26587838/pexels-photo-26587838.jpeg",
     "description": "Timeless canvas high-top sneakers.",
     "quantity": 1
   },
@@ -67,7 +67,7 @@
     "name": "Brown Leather Boot",
     "brand": "RuggedWear",
     "price": 170.00,
-    "image_url": "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg",
+    "image_url": "https://images.pexels.com/photos/15557047/pexels-photo-15557047.jpeg",
     "description": "Premium brown leather boot for rugged outdoor style.",
     "quantity": 1
   },

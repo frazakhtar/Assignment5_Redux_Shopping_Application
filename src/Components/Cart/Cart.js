@@ -1,17 +1,20 @@
 import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import Container from "@mui/material/Container";
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectCartTotal } from "../../features/cart/cartSlice";
-import { Outlet, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartTotal, increaseQuantity, decreaseQuantity, emptyTheCart } from "../../features/cart/cartSlice";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartData = useSelector((state) => state.cart.items);
   const cartTotal= useSelector(selectCartTotal)
-  console.log(cartTotal);
+  const dispatch = useDispatch();
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{my:2}}>
       <Paper elevation={3}>
+        <Box sx={{p:2,display:"flex", alignItems:"right", justifyContent:"right"}}>
+          <Button  sx={{ color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>dispatch(emptyTheCart())}>Empty Cart</Button>
+        </Box>
         <Grid
           container
           sx={{
@@ -41,11 +44,11 @@ const Cart = () => {
                   <Box sx={{m:1,p:1, width:"100px"}}>{elem.name}</Box>
                   <Box sx={{m:1,p:1, width:"80px"}}>{elem.price}</Box>
                   <Box sx={{m:1,p:1}}>
-                    <Button>
+                    <Button  sx={{p:0, mr:2, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>{dispatch(decreaseQuantity(elem.id))}}>
                         -
                     </Button>
                     {elem.quantity}
-                    <Button>
+                    <Button  sx={{p:0, ml:2, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>{dispatch(increaseQuantity(elem.id))}}>
                         +
                     </Button>
                   </Box>
@@ -55,10 +58,10 @@ const Cart = () => {
           })}
         </Grid>
           <Box sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-            <Typography sx={{fontWeight:700 , mb:3}}>Total Cart Value: {cartTotal}</Typography>
+            <Typography sx={{fontWeight:700 , mb:3}}>Total Cart Value: {cartTotal.toFixed(2)}</Typography>
           </Box>
           <Box sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-           <Button component={Link} to="/checkout" sx={{mb:3}}>Checkout</Button>
+           <Button component={Link} to="/checkout" sx={{ mb: 3, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }}>Checkout</Button>
           </Box>
       </Paper>
     </Container>

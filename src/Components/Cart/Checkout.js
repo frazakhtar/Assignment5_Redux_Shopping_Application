@@ -2,6 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import  {selectCartTotal} from "../../features/cart/cartSlice"
 import {
+  RadioGroup,
+  FormControlLabel,
+  Radio,
   Box,
   Button,
   Container,
@@ -13,8 +16,9 @@ import {
 } from "@mui/material";
 
 const Checkout = () => {
+    const [paymentMethod, setPaymentMethod] = React.useState("cod");
     const total= useSelector(selectCartTotal)
-     const [formData, setFormData] = React.useState({
+    const [formData, setFormData] = React.useState({
     cardName: "",
     cardNumber: "",
     expiry: "",
@@ -43,7 +47,26 @@ const Checkout = () => {
           Checkout
         </Typography>
 
+          <RadioGroup
+          row
+          value={paymentMethod}
+          onChange={(e) => setPaymentMethod(e.target.value)}
+          sx={{ mb: 3, display:"flex", alignItems:"center", justifyContent:"center" }}
+        >
+          <FormControlLabel
+            value="cod"
+            control={<Radio />}
+            label="Cash On Delivery"
+          />
+          <FormControlLabel
+            value="card"
+            control={<Radio />}
+            label="Credit Card"
+          />
+        </RadioGroup>
+        {paymentMethod === "card" && (
         <Box component="form" onSubmit={handleSubmit} noValidate>
+        
           <Grid container sx={{display:"flex", alignItems:"center", justifyContent:"center"}} spacing={2}>
          
             <Grid item xs={12}>
@@ -68,7 +91,6 @@ const Checkout = () => {
               />
             </Grid>
 
-            {/* Expiry Date */}
             <Grid item xs={6}>
               <TextField
                 label="Expiry Date (MM/YY)"
@@ -110,11 +132,12 @@ const Checkout = () => {
                 type="submit"
                 variant="contained"
                 fullWidth
-                sx={{my:1.5,py: 1.5, fontWeight: 600 }}
+                sx={{my:1.5,py: 1.5, fontWeight: 600, color:"#000000",backgroundColor: "#f6e7e7ff" }}
               >
                 Pay Now
               </Button>
         </Box>
+        )}
       </Paper>
     </Container>
   )
