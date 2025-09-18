@@ -16,7 +16,7 @@ import {
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 const HomePage = () => {
   const [product, setProduct] = React.useState([]);
@@ -35,14 +35,14 @@ const HomePage = () => {
     setIsLoading(false);
   };
   const dispatch = useDispatch();
-  const cartItem = useSelector((state)=>state.cart.items)
+  const cartItem = useSelector((state) => state.cart.items);
 
   const handleAddToCart = (product) => {
-    console.log(product)
+    console.log(product);
     dispatch(addToCart(product));
   };
 
-    const handleSearch = (e) => {
+  const handleSearch = (e) => {
     const value = e.target.value;
     setQuery(value);
     if (!value) {
@@ -106,69 +106,82 @@ const HomePage = () => {
             }}
           />
         </Box>
-{isLoading ? <Paper sx={{fontSize:"5rem", display:"flex",alignItems:"center",justifyContent:"center"}}>Loading...</Paper> :
-        <Grid
-          container
-          spacing={3}
-          sx={{
-            p: 3,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {filtered.map((elem) => {
-            return (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={elem.id}>
-                <Card
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    borderRadius: 3,
-                    boxShadow: 3,
-                    height: "25rem",
-                    width: "15rem",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="180"
-                    image={elem.image_url}
-                    alt={elem.name}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6" fontWeight={600}>
-                      {elem.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {elem.brand}
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      fontWeight={700}
-                      sx={{ mt: 2 }}
-                    >
-                      ${elem.price}
-                    </Typography>
-                  </CardContent>
-                  <CardActions sx={{ mt: "auto", mb: 1 }}>
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      color="#000000"
-                      disabled={cartItem?.some((item) => item.id === elem.id)}
-                      sx={{ backgroundColor: "#f6e7e7ff", fontWeight: "600" }}
-                      onClick={() => handleAddToCart(elem)}
-                    >
-                      {cartItem?.some((item) => item.id === elem.id) ? "Product Added" : "Add to Cart"}
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            );
-          })}
-        </Grid>
-}
+        {isLoading ? (
+          <Paper
+            sx={{
+              fontSize: "3rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            Loading...
+          </Paper>
+        ) : (
+          <Grid
+            container
+            spacing={3}
+            sx={{
+              p: 3,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {filtered.map((elem) => {
+              return (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={elem.id}>
+                  <Card
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      borderRadius: 3,
+                      boxShadow: 3,
+                      height: "25rem",
+                      width: "15rem",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      height="180"
+                      image={elem.image_url}
+                      alt={elem.name}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography variant="h6" fontWeight={600}>
+                        {elem.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {elem.brand}
+                      </Typography>
+                      <Typography
+                        variant="subtitle1"
+                        fontWeight={700}
+                        sx={{ mt: 2 }}
+                      >
+                        ${elem.price}
+                      </Typography>
+                    </CardContent>
+                    <CardActions sx={{ mt: "auto", mb: 1 }}>
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        color="#000000"
+                        disabled={cartItem?.some((item) => item.id === elem.id)}
+                        sx={{ backgroundColor: "#f6e7e7ff", fontWeight: "600" }}
+                        onClick={() => handleAddToCart(elem)}
+                      >
+                        {cartItem?.some((item) => item.id === elem.id)
+                          ? "Product Added"
+                          : "Add to Cart"}
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
+        )}
       </Paper>
     </Container>
   );

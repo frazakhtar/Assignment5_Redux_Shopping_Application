@@ -1,24 +1,23 @@
 import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import Container from "@mui/material/Container";
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartTotal, increaseQuantity, decreaseQuantity, emptyTheCart } from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({ button }) => {
   const cartData = useSelector((state) => state.cart.items);
   const cartTotal= useSelector(selectCartTotal)
   const dispatch = useDispatch();
   return (
     <Container maxWidth="md" sx={{my:2}}>
-      <Paper elevation={3}>
-        <Box sx={{p:2,display:"flex", alignItems:"right", justifyContent:"right"}}>
-          <Button  sx={{ color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>dispatch(emptyTheCart())}>Empty Cart</Button>
+      <Paper elevation={3} sx={{ borderRadius: 3}}>
+        <Typography variant="h5"component="h5" sx={{p:3,display:"flex",alignItems:"center",justifyContent:"center"}}>My Cart</Typography>
+        <Box sx={{pr:4,display:"flex", alignItems:"right", justifyContent:"right"}}>
+          <Button disabled={cartData.length===0}  sx={{ color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>dispatch(emptyTheCart())}>Empty Cart</Button>
         </Box>
         <Grid
           container
           sx={{
-            my: 2,
             p: 3,
             display: "flex",
             alignItems: "center",
@@ -41,14 +40,14 @@ const Cart = () => {
                       borderRadius: 2,
                     }}
                   />
-                  <Box sx={{m:1,p:1, width:"100px"}}>{elem.name}</Box>
+                  <Box sx={{m:1,p:1, width:"80px"}}>{elem.name}</Box>
                   <Box sx={{m:1,p:1, width:"80px"}}>{elem.price}</Box>
-                  <Box sx={{m:1,p:1}}>
-                    <Button  sx={{p:0, mr:2, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>{dispatch(decreaseQuantity(elem.id))}}>
+                  <Box sx={{m:1,p:1, width: "100px"}}>
+                    <Button  sx={{minWidth:"20px", p:"2px 2px",mr:2, fontSize:"0.8rem",color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>{dispatch(decreaseQuantity(elem.id))}}>
                         -
                     </Button>
                     {elem.quantity}
-                    <Button  sx={{p:0, ml:2, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }} onClick={()=>{dispatch(increaseQuantity(elem.id))}}>
+                    <Button  sx={{minWidth:"20px", p:"2px 2px",ml:2, fontSize:"0.8rem",color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }}  onClick={()=>{dispatch(increaseQuantity(elem.id))}}>
                         +
                     </Button>
                   </Box>
@@ -61,7 +60,7 @@ const Cart = () => {
             <Typography sx={{fontWeight:700 , mb:3}}>Total Cart Value: {cartTotal.toFixed(2)}</Typography>
           </Box>
           <Box sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-           <Button component={Link} to="/checkout" sx={{ mb: 3, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }}>Checkout</Button>
+           {button? button:<Button disabled={cartData.length===0} component={Link} to="/checkout" sx={{ mb: 3, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }}>Checkout</Button>}
           </Box>
       </Paper>
     </Container>

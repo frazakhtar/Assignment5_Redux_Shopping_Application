@@ -25,10 +25,11 @@ const About = () => {
           <Grid sx ={{display:"flex",alignItems:"center",justifyContent:"center"}} item xs={12} md={6}>
             <Box
               component="img"
-              src="https://images.pexels.com/photos/2529151/pexels-photo-2529151.jpeg"
+              src="About1.png"
               alt="About Our Store"
               sx={{
-                width: "75%",
+                maxWidth: "100%",
+                maxHeight: "500px",
                 borderRadius: 3,
                 boxShadow: 3,
               }}

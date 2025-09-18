@@ -1,6 +1,7 @@
 import React from 'react'
+import Cart from "./Cart"
 import { useSelector } from 'react-redux'
-import  {selectCartTotal} from "../../features/cart/cartSlice"
+import {selectCartTotal} from "../../features/cart/cartSlice"
 import {
   RadioGroup,
   FormControlLabel,
@@ -14,8 +15,11 @@ import {
   Typography,
   Divider,
 } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
-const Checkout = () => {
+
+export default function CheckoutLayout() {
+    const navigate = useNavigate()
     const [paymentMethod, setPaymentMethod] = React.useState("cod");
     const total= useSelector(selectCartTotal)
     const [formData, setFormData] = React.useState({
@@ -26,7 +30,7 @@ const Checkout = () => {
     remarks: "",
   })
 
-    const handleChange = (e) => {
+     const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -39,14 +43,19 @@ const Checkout = () => {
     console.log("Form submitted:", formData);
   };
 
-
   return (
-   <Container maxWidth="sm">
-      <Paper elevation={3} sx={{ p: 4, mt: 4, borderRadius: 3 }}>
-        <Typography sx={{display:"flex", alignItems:"center", justifyContent:"center"}} variant="h5" fontWeight={700} gutterBottom>
+    <Container maxWidth="lg">
+    <Grid container padding={2}>
+      <Grid item xs={12} md={6}sx={{maxWidth:"620px"}}>
+          <Cart button={<Button onClick={()=>navigate("/")} sx={{mb:3, color:"#000000",backgroundColor: "#f6e7e7ff", fontWeight: "600" }}>Go Back To Shopping</Button>} />
+      </Grid>
+
+      <Grid item xs={12} md={6} sx={{maxWidth:"500px"}}>
+         <Container maxWidth="lg" sx={{display:"flex"}}>
+      <Paper elevation={3} sx={{ p: 4, mt: 2, borderRadius: 3 }}>
+        <Typography sx={{display:"flex", alignItems:"center", justifyContent:"center"}} variant="h5" gutterBottom>
           Checkout
         </Typography>
-
           <RadioGroup
           row
           value={paymentMethod}
@@ -127,7 +136,7 @@ const Checkout = () => {
           </Grid>
 
           <Divider sx={{mt:2}}/>
-          <Typography component="div" sx={{fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center"}}>Total Value : {total}</Typography>
+          <Typography component="div" sx={{fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center"}}>Total Shopping Value : {total.toFixed(2)}</Typography>
              <Button
                 type="submit"
                 variant="contained"
@@ -140,7 +149,8 @@ const Checkout = () => {
         )}
       </Paper>
     </Container>
-  )
+      </Grid>
+    </Grid>
+</Container>
+  );
 }
-
-export default Checkout
