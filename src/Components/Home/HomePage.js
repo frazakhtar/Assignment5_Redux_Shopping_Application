@@ -17,12 +17,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
 import SearchIcon from "@mui/icons-material/Search";
+import Cart from "../Cart/Cart.js";
 
 const HomePage = () => {
   const [product, setProduct] = React.useState([]);
   const [filtered, setFiltered] = React.useState([]);
   const [query, setQuery] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -34,6 +36,7 @@ const HomePage = () => {
     setFiltered(result);
     setIsLoading(false);
   };
+
   const dispatch = useDispatch();
   const cartItem = useSelector((state) => state.cart.items);
 
@@ -59,67 +62,13 @@ const HomePage = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ my: 2 }}>
-      <Paper elevation={3}>
-        <Typography
-          variant="h5"
-          component="h5"
-          sx={{
-            p: 3,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          Available Products
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <TextField
-            value={query}
-            variant="standard"
-            onChange={handleSearch}
-            placeholder="Search Products"
-            InputProps={{
-              disableUnderline: true,
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            sx={{
-              pl: 1,
-              pt: 1,
-              width: "20rem",
-              height: "2.5rem",
-              border: "1px solid black",
-              borderRadius: "10rem",
-            }}
-          />
-        </Box>
-        {isLoading ? (
-          <Paper
-            sx={{
-              fontSize: "3rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Loading...
-          </Paper>
-        ) : (
-          <Grid
-            container
-            spacing={3}
+    <>
+      <Cart />
+      <Container maxWidth="lg" sx={{ my: 2 }}>
+        <Paper elevation={3}>
+          <Typography
+            variant="h5"
+            component="h5"
             sx={{
               p: 3,
               display: "flex",
@@ -127,26 +76,100 @@ const HomePage = () => {
               justifyContent: "center",
             }}
           >
-            {filtered.map((elem) => {
-              return (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={elem.id}>
+            Available Products
+          </Typography>
+
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              value={query}
+              variant="standard"
+              onChange={handleSearch}
+              placeholder="Search Products"
+              InputProps={{
+                disableUnderline: true,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton>
+                      <SearchIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                pl: 1,
+                pt: 1,
+                width: "20rem",
+                height: "2.5rem",
+                border: "1px solid black",
+                borderRadius: "10rem",
+              }}
+            />
+          </Box>
+
+          {isLoading ? (
+            <Paper
+              sx={{
+                fontSize: "3rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                mt: 3,
+                p: 4,
+              }}
+            >
+              Loading...
+            </Paper>
+          ) : (
+            <Grid
+              container
+              spacing={3}
+              sx={{
+                p: 3,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {filtered.map((elem) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={elem.id}
+                  sx={{ display: "flex" }}
+                >
                   <Card
                     sx={{
                       display: "flex",
                       flexDirection: "column",
                       borderRadius: 3,
                       boxShadow: 3,
-                      height: "25rem",
-                      width: "15rem",
+                      width: "18rem",
+                      height: "24rem",
                     }}
                   >
                     <CardMedia
                       component="img"
-                      height="180"
+                      height="150"
                       image={elem.image_url}
                       alt={elem.name}
+                      sx={{ objectFit: "cover" }}
                     />
-                    <CardContent sx={{ flexGrow: 1 }}>
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 0.5,
+                        p: 2,
+                      }}
+                    >
                       <Typography variant="h6" fontWeight={600}>
                         {elem.name}
                       </Typography>
@@ -156,18 +179,21 @@ const HomePage = () => {
                       <Typography
                         variant="subtitle1"
                         fontWeight={700}
-                        sx={{ mt: 2 }}
+                        sx={{ mt: 1, mb: 1 }}
                       >
                         ${elem.price}
                       </Typography>
                     </CardContent>
-                    <CardActions sx={{ mt: "auto", mb: 1 }}>
+                    <CardActions sx={{ p: 2 }}>
                       <Button
                         fullWidth
                         variant="contained"
-                        color="#000000"
                         disabled={cartItem?.some((item) => item.id === elem.id)}
-                        sx={{ backgroundColor: "#f6e7e7ff", fontWeight: "600" }}
+                        sx={{
+                          backgroundColor: "#f6e7e7ff",
+                          fontWeight: "600",
+                          color: "#000",
+                        }}
                         onClick={() => handleAddToCart(elem)}
                       >
                         {cartItem?.some((item) => item.id === elem.id)
@@ -177,12 +203,12 @@ const HomePage = () => {
                     </CardActions>
                   </Card>
                 </Grid>
-              );
-            })}
-          </Grid>
-        )}
-      </Paper>
-    </Container>
+              ))}
+            </Grid>
+          )}
+        </Paper>
+      </Container>
+    </>
   );
 };
 
