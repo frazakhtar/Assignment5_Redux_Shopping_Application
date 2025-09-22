@@ -1,3 +1,3 @@
 ## Netlify Deployed Url
 
-https://iridescent-bonbon-0a1402.netlify.app/
+genuine-hotteok-8fbc09.netlify.app
