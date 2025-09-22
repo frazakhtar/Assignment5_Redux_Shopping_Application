@@ -30,8 +30,6 @@ export default function CheckoutLayout() {
   });
 
   const [captchaInput, setCaptchaInput] = React.useState("");
-  const [captchaValid, setCaptchaValid] = React.useState(false);
-  const captchaCode = "1234";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,12 +42,12 @@ export default function CheckoutLayout() {
   const handleCaptchaChange = (e) => {
     const value = e.target.value;
     setCaptchaInput(value);
-    setCaptchaValid(value === captchaCode);
+    console.log(captchaInput)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (paymentMethod === "cod" && !captchaValid) {
+    if (paymentMethod === "cod") {
       alert("Please enter the correct captcha!");
       return;
     }
@@ -137,12 +135,12 @@ export default function CheckoutLayout() {
                   </Box>
                 ) : (
                   <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                    <TextField label={`Enter Captcha (${captchaCode})`} value={captchaInput} onChange={handleCaptchaChange} fullWidth required />
+                    <TextField label={`Enter Captcha`} value={captchaInput} onChange={handleCaptchaChange} fullWidth required />
                     <Divider sx={{ mt: 2, mb: 2 }} />
                     <Typography align="center" fontWeight={700} sx={{ mb: 2 }}>
                       Total Shopping Value: {total.toFixed(2)}
                     </Typography>
-                    <Button type="submit" variant="contained" fullWidth disabled={!captchaValid} sx={{ py: 1.5, fontWeight: 600, color: "#000000", backgroundColor: "#f6e7e7ff" }}>
+                    <Button type="submit" variant="contained" fullWidth sx={{ py: 1.5, fontWeight: 600, color: "#000000", backgroundColor: "#f6e7e7ff" }}>
                       Order Now
                     </Button>
                   </Box>
